@@ -23,6 +23,10 @@ class BookForm extends React.Component {
 			category: this.state.category,
 			id: Math.floor(Math.random() * 1000000)
 		})
+		this.setState({
+			title: '',
+			category: 'Action'
+		})
 	}
 
 	render() {

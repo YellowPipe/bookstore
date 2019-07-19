@@ -7,15 +7,16 @@ const INITIAL_STATE = {
 const libraryReducer = (state = INITIAL_STATE, action) => {
 	switch(action.type) {
 		case actionTypes.CREATE_BOOK:
-			console.log('adding book')
 			return {
 				...state,
 				books: [...state.books, action.payload]
 			}
 		case actionTypes.REMOVE_BOOK:
-			break;
+			return {
+				...state,
+				books: state.books.filter(({id}) => id !== action.payload )
+			}
 		default:
-			console.log('default')
 			return state
 	}
 }
