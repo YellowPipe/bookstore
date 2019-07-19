@@ -1,6 +1,7 @@
 import React from 'react';
 import Book from '../book/book.component';
 import { connect } from 'react-redux';
+import './booklist.styles.scss'
 
 const BookList = ({books, filter}) => {
 	let filteredBooks
@@ -11,7 +12,7 @@ const BookList = ({books, filter}) => {
 	}
 
 	return (
-		<div>
+		<div className='booklist'>
 			{ filteredBooks.map(({id, title, category}) => (
 				<Book key={id} id={id} title={title} category={category} />
 			))

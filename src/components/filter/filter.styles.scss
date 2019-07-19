@@ -1,6 +1,23 @@
-.categories {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	border-bottom: 1px solid grey;
+.filter-box {
+	width: 250px;
+	position: absolute;
+	top: 100px;
+	right: 60px;
+	background: white;
+
+	.categories {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		border: 1px solid #e8e8e8;
+		border-radius: 5px;
+
+		.category {
+			text-align: center;
+			cursor: pointer;
+		}
+	}
+
+
 }
+

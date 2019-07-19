@@ -1,7 +1,8 @@
 import actionTypes from './filter.actionTypes';
 
 const INITIAL_STATE = {
-	filter: ''
+	filter: '',
+	hidden: true
 }
 
 const filterReducer = (state = INITIAL_STATE, action) => {
@@ -10,6 +11,11 @@ const filterReducer = (state = INITIAL_STATE, action) => {
 			return {
 				...state,
 				filter: action.payload
+			}
+		case actionTypes.TOGGLE_HIDDEN:
+			return {
+				...state,
+				hidden: !state.hidden
 			}
 		default:
 			return state
