@@ -23,7 +23,8 @@ class BookForm extends React.Component {
 		this.props.addBook({
 			title: this.state.title,
 			category: this.state.category,
-			id: Math.floor(Math.random() * 1000000)
+			id: Math.floor(Math.random() * 1000000),
+			read: false
 		})
 		this.setState({
 			title: '',

@@ -13,8 +13,8 @@ const BookList = ({books, filter}) => {
 
 	return (
 		<div className='booklist'>
-			{ filteredBooks.map(({id, title, category}) => (
-				<Book key={id} id={id} title={title} category={category} />
+			{ filteredBooks.map(({id, title, category, read}) => (
+				<Book key={id} id={id} title={title} category={category} read={read} />
 			))
 			}
 		</div>

@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { removeBook } from '../../redux/library/library.actions';
+import { removeBook, changeStatus } from '../../redux/library/library.actions';
 import './book.styles.scss';
 
-const Book = ({id, title, category, removeBook}) => (
+const Book = ({id, title, category, read, removeBook, changeStatus }) => (
 	<div className='book'>
 		<div className='info'>
 			<p className='category'>{category}</p>
@@ -11,15 +11,16 @@ const Book = ({id, title, category, removeBook}) => (
 			<p className='delete-book' onClick={() => removeBook(id)} >Delete</p>
 		</div>
 		<div className='progress'>
-			<div className='read'>
-				<p className='progressText'>Finished</p>
-			</div>
+			<button onClick={() => changeStatus(id)} className={`${read ? 'read' : 'in-progress'} button`}>
+				{read ? 'Finished' : 'In progress'}
+			</button>
 		</div>
 	</div>
 )
 
 const mapDispatchToProps = dispatch => ({
-  removeBook: bookId => dispatch(removeBook(bookId))
+  removeBook: bookId => dispatch(removeBook(bookId)),
+  changeStatus: bookId => dispatch(changeStatus(bookId))
 })
 
 export default connect(null, mapDispatchToProps)(Book);
