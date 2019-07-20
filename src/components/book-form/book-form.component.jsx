@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addBook } from '../../redux/library/library.actions';
 import './book-form.styles.scss';
+import { CATEGORIES } from '../../constants/constants';
 
 class BookForm extends React.Component {
 	constructor() {
@@ -35,13 +36,11 @@ class BookForm extends React.Component {
 			<form className='form' onSubmit={this.handleSubmit} >
 			  <input required className='title-field' placeholder='Book Title' type="text" name="title" value={this.state.title} onChange={this.handleChange} />
 			  <select required className='category' name="category" value={this.state.category} onChange={this.handleChange} >
-			    <option value="Action">Action</option>
-			    <option value="Biography">Biography</option>
-			    <option value="History">History</option>
-			    <option value="Horror">Horror</option>
-			    <option value="Kids">Kids</option>
-			    <option value="Learning">Learning</option>
-			    <option value="Sci-Fi">Sci-Fi</option>
+			    {
+					CATEGORIES.map((category, i) => (
+						<option key={i} value={category}>{category}</option>
+					))
+				}
 			  </select>
 			  <input className='submitButton' type="submit" />
 			</form>

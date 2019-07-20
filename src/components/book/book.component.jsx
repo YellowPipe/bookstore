@@ -8,7 +8,7 @@ const Book = ({id, title, category, removeBook}) => (
 		<div className='info'>
 			<p className='category'>{category}</p>
 			<p className='title'>{title}</p>
-			<p className='delete-book' onClick={() => removeBook(id)} >Delete Book</p>
+			<p className='delete-book' onClick={() => removeBook(id)} >Delete</p>
 		</div>
 		<div className='progress'>
 			<div className='read'>
