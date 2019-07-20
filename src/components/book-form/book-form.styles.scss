@@ -36,3 +36,11 @@
 		cursor: pointer;
 	}
 }
+
+@media (max-width: 700px) {
+	.form {
+		height: 170px;
+		grid-template-columns: 100%;
+		grid-template-rows: 40% 40% 20%;
+	}
+}

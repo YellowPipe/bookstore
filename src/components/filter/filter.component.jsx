@@ -1,10 +1,11 @@
 import React from 'react';
 import './filter.styles.scss';
 import { connect } from 'react-redux';
-import { changeFilter } from '../../redux/filter/filter.actions'; 
+import { changeFilter } from '../../redux/filter/filter.actions';
+import { toggleHidden } from '../../redux/filter/filter.actions';
 
-const Filter = ({changeFilter}) => (
-	<div className='filter-box'>
+const Filter = ({changeFilter, toggleHidden}) => (
+	<div className='filter-box' onClick={toggleHidden}>
 		<div className='categories'>
 			<p className='category' value="All" onClick ={() => changeFilter("") }>All</p>
 			<p className='category' value="Action" onClick ={() => changeFilter("Action") } >Action</p>
@@ -19,7 +20,8 @@ const Filter = ({changeFilter}) => (
 )
 
 const mapDispatchToProps = dispatch => ({
-	changeFilter: filter => dispatch(changeFilter(filter))
+	changeFilter: filter => dispatch(changeFilter(filter)),
+	toggleHidden: () => dispatch(toggleHidden())
 })
 
 export default connect(null, mapDispatchToProps)(Filter);
