@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { removeBook, changeStatus } from '../../redux/library/library.actions';
+import { removeBook, changeStatus } from '../../redux/actions/library';
 import './book.styles.scss';
 
 const Book = ({id, title, category, read, removeBook, changeStatus }) => (
@@ -18,9 +18,4 @@ const Book = ({id, title, category, read, removeBook, changeStatus }) => (
 	</div>
 )
 
-const mapDispatchToProps = dispatch => ({
-  removeBook: bookId => dispatch(removeBook(bookId)),
-  changeStatus: bookId => dispatch(changeStatus(bookId))
-})
-
-export default connect(null, mapDispatchToProps)(Book);
+export default connect(null, { removeBook, changeStatus })(Book);

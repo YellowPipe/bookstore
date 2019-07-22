@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addBook } from '../../redux/library/library.actions';
+import { addBook } from '../../redux/actions/library';
 import './book-form.styles.scss';
 import { CATEGORIES } from '../../constants/constants';
 
@@ -32,6 +32,14 @@ class BookForm extends React.Component {
 		})
 	}
 
+	// componentDidMount() {
+ //        axios.get('http://localhost:3000/api/v1/books.json')
+ //        .then(response => {
+ //            console.log(response)
+ //        })
+ //        .catch(error => console.log(error))
+ //    }
+
 	render() {
 		return (
 			<form className='form' onSubmit={this.handleSubmit} >
@@ -49,8 +57,4 @@ class BookForm extends React.Component {
 	}
 }
 
-const mapDispatchToProps = dispatch => ({
-  addBook: book => dispatch(addBook(book))
-})
-
-export default connect(null, mapDispatchToProps)(BookForm);
+export default connect(null, { addBook })(BookForm);

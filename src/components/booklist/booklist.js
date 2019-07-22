@@ -1,30 +1,20 @@
 import React from 'react';
-import Book from '../book/book.component';
+import Book from '../book/book';
 import { connect } from 'react-redux';
 import './booklist.styles.scss'
 
-const BookList = ({books, filter}) => {
-	let filteredBooks
-	if (filter.length) {
-		filteredBooks = books.filter( ({category}) => category === filter )
-	} else {
-		filteredBooks = books
-	}
-
-	return (
+const BookList = ({books, filter}) => (
 		<div className='booklist'>
-			{ filteredBooks.map(({id, title, category, read}) => (
+			{ books.map(({id, title, category, read}) => (
 				<Book key={id} id={id} title={title} category={category} read={read} />
 			))
 			}
 		</div>
-)}
+);
 
 const mapStateToProps = ({ library: {books}, filter: {filter} }) => ({
-	books,
+	books: books.filter(book => filter.length === 0 ? true : book.category === filter),
 	filter
 })
 	
-
-
 export default connect(mapStateToProps)(BookList);

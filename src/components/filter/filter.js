@@ -1,8 +1,7 @@
 import React from 'react';
 import './filter.styles.scss';
 import { connect } from 'react-redux';
-import { changeFilter } from '../../redux/filter/filter.actions';
-import { toggleHidden } from '../../redux/filter/filter.actions';
+import { changeFilter, toggleHidden } from '../../redux/actions/filter';
 import { CATEGORIES } from '../../constants/constants';
 
 const Filter = ({changeFilter, toggleHidden}) => (
@@ -18,9 +17,4 @@ const Filter = ({changeFilter, toggleHidden}) => (
 	</div>
 )
 
-const mapDispatchToProps = dispatch => ({
-	changeFilter: filter => dispatch(changeFilter(filter)),
-	toggleHidden: () => dispatch(toggleHidden())
-})
-
-export default connect(null, mapDispatchToProps)(Filter);
+export default connect(null, {changeFilter, toggleHidden} )(Filter);

@@ -1,4 +1,4 @@
-import actionTypes from './filter.actionTypes';
+import { CHANGE_FILTER, TOGGLE_HIDDEN } from '../actionTypes';
 
 const INITIAL_STATE = {
 	filter: '',
@@ -7,12 +7,12 @@ const INITIAL_STATE = {
 
 const filterReducer = (state = INITIAL_STATE, action) => {
 	switch(action.type) {
-		case actionTypes.CHANGE_FILTER:
+		case CHANGE_FILTER:
 			return {
 				...state,
-				filter: action.payload
+				filter: action.filter
 			}
-		case actionTypes.TOGGLE_HIDDEN:
+		case TOGGLE_HIDDEN:
 			return {
 				...state,
 				hidden: !state.hidden

@@ -1,4 +1,4 @@
-import actionTypes from './library.actionTypes';
+import { CREATE_BOOK, REMOVE_BOOK, CHANGE_STATUS } from '../actionTypes';
 
 const INITIAL_STATE = {
 	books: [{title: 'First Book', category: 'Action', id: 0, read: true}]
@@ -6,22 +6,22 @@ const INITIAL_STATE = {
 
 const libraryReducer = (state = INITIAL_STATE, action) => {
 	switch(action.type) {
-		case actionTypes.CREATE_BOOK:
+		case CREATE_BOOK:
 			return {
 				...state,
-				books: [...state.books, action.payload]
+				books: [...state.books, action.book]
 			}
-		case actionTypes.REMOVE_BOOK:
+		case REMOVE_BOOK:
 			return {
 				...state,
-				books: state.books.filter(({id}) => id !== action.payload )
+				books: state.books.filter(({id}) => id !== action.bookId )
 			}
 
-		case actionTypes.CHANGE_STATUS:
+		case CHANGE_STATUS:
 			return {
 				...state,
 				books: state.books.map((book) => {
-					if (book.id === action.payload) {
+					if (book.id === action.bookId) {
 						book.read = !book.read
 					}
 					return book 	

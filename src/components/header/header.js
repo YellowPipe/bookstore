@@ -1,8 +1,8 @@
 import React from 'react';
 import './header.styles.scss';
-import Filter from '../filter/filter.component';
+import Filter from '../filter/filter';
 import { connect } from 'react-redux';
-import { toggleHidden } from '../../redux/filter/filter.actions';
+import { toggleHidden } from '../../redux/actions/filter';
 
 const Header = ({hidden, toggleHidden}) => (
 	<div className='header'>
@@ -22,8 +22,4 @@ const mapStateToProps = ({ filter }) => ({
   hidden: filter.hidden
 })
 
-const mapDispatchToProps = dispatch => ({
-  toggleHidden: () => dispatch(toggleHidden())
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, { toggleHidden })(Header);
