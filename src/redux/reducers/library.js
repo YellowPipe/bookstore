@@ -1,7 +1,7 @@
-import { CREATE_BOOK, REMOVE_BOOK, CHANGE_STATUS } from '../actionTypes';
+import { CREATE_BOOK, REMOVE_BOOK, CHANGE_STATUS, SET_LIBRARY } from '../actionTypes';
 
 const INITIAL_STATE = {
-	books: [{title: 'First Book', category: 'Action', id: 0, read: true}]
+	books: []
 }
 
 const libraryReducer = (state = INITIAL_STATE, action) => {
@@ -27,6 +27,12 @@ const libraryReducer = (state = INITIAL_STATE, action) => {
 					return book 	
 				})
 			}
+
+		case SET_LIBRARY:
+			return {
+				...state,
+				books: action.books
+			}			
 		default:
 			return state
 	}

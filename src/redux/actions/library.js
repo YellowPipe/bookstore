@@ -1,4 +1,4 @@
-import { CREATE_BOOK, REMOVE_BOOK, CHANGE_STATUS } from '../actionTypes';
+import { CREATE_BOOK, REMOVE_BOOK, CHANGE_STATUS, SET_LIBRARY } from '../actionTypes';
 
 export const addBook = (book) => ({
 	type: CREATE_BOOK,
@@ -13,4 +13,9 @@ export const removeBook = (bookId) => ({
 export const changeStatus = (bookId) => ({
 	type: CHANGE_STATUS,
 	bookId
+})
+
+export const setLibrary = (books) => ({
+	type: SET_LIBRARY,
+	books
 })
