@@ -6,11 +6,12 @@ import { setLibrary } from '../../redux/actions/library';
 
 class BookList extends React.Component {
 
-	componentDidMount() {
+	componentWillMount() {
 		console.log('called')
 		fetch('http://localhost:3000/api/v1/books')
 		.then(res => res.json())
 		.then(data => this.props.setLibrary(data))
+		.catch(err => {console.log(err)});
 	}
 
 	render () {

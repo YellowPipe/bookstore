@@ -9,7 +9,8 @@ const Book = ({id, title, category, read, removeBook, changeStatus }) => {
 		fetch(`http://localhost:3000/api/v1/books/${id}`, {
 		  method: 'DELETE'
 		})
-		.then(removeBook(id));
+		.then(removeBook(id))
+		.catch(err => {console.log(err)})
 	}
 
 	const handleStatusChange = (id) => {
