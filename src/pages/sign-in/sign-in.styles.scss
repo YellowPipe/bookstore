@@ -1,0 +1,21 @@
+.sign-in-form {
+	width: 300px;
+	margin: 50px auto;
+	padding: 60px 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: 1px solid #bfbfbf;
+	background: #eaeaead9;
+	border-radius: 5px;
+
+	.title-field {
+		margin: 5px 0;
+		border: 1px solid #bfbfbf;
+	}
+
+	.submitButton {
+		padding: 7px 70px;
+		margin-top: 15px;
+	}
+}

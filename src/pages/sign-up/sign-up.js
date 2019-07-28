@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { registerUser } from '../redux-token-auth-config';
+import { registerUser } from '../../redux-token-auth-config';
 
 class SignUp extends React.Component {
 	constructor() {
@@ -30,11 +30,12 @@ class SignUp extends React.Component {
 	    registerUser({ email, username, password, passwordConfirmation }) // <-<-<-<-<- here's the important part <-<-<-<-<-
 	      .then(res => {console.log(res)})
 	      .catch(err => console.log(err))
-	  }
+	}
 
 	render() {
 		return (
-			<form className='form' onSubmit={(e) => this.submitForm(e) } >
+			<form className='sign-in-form' onSubmit={(e) => this.submitForm(e) } >
+			  <h3>Register</h3>
 			  <input required className='title-field' placeholder='Username' type="text" name="username" value={this.state.username} onChange={this.handleChange} />
 			  <input required className='title-field' placeholder='Email' type="email" name="email" value={this.state.email} onChange={this.handleChange} />
 			  <input required className='title-field' placeholder='Password' type="password" name="password" value={this.state.password} onChange={this.handleChange} />

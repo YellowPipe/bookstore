@@ -4,9 +4,9 @@ import { connect } from 'react-redux'
 import { Switch, Route, withRouter } from 'react-router-dom';
 import './App.css';
 import Homepage from './pages/homepage';
-import SignUp from './pages/sign-up';
+import SignInUp from './pages/sign-in-up/sign-in-up';
 import Header from './components/header/header';
-import SignIn from './components/sign-in/sign-in';
+// import SignIn from './pages/sign-in/sign-in';
 
 class App extends React.Component {
   
@@ -35,14 +35,10 @@ class App extends React.Component {
     })
 
   	return (
-  	  <div>
-	  	  <Header />
-  	  	  <Switch>
-  	      	<Route exact path='/' component={requireSignIn(Homepage)} />
-  	      	<Route path='/signup' component={requireSignedOut(SignUp)} />
-            <Route path='/signin' component={requireSignedOut(SignIn)} />
-  	      </Switch>
-      </div>
+  	  <Switch>
+      	<Route exact path='/' component={requireSignIn(Homepage)} />
+        <Route path='/signin' component={requireSignedOut(SignInUp)} />
+      </Switch>
     );
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { signInUser } from '../../redux-token-auth-config';
+import './sign-in.styles.scss'
 
 class SignIn extends React.Component {
 	constructor() {
@@ -30,7 +31,8 @@ class SignIn extends React.Component {
 
 	render() {
 		return (
-			<form className='form' onSubmit={(e) => this.submitForm(e) } >
+			<form className='sign-in-form' onSubmit={(e) => this.submitForm(e) } >
+			  <h3>Sign In</h3>
 			  <input required className='title-field' placeholder='Email' type="email" name="email" value={this.state.email} onChange={this.handleChange} />
 			  <input required className='title-field' placeholder='Password' type="password" name="password" value={this.state.password} onChange={this.handleChange} />
 			  <input className='submitButton' type="submit" />
