@@ -1,6 +1,7 @@
-import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import { generateRequireSignInWrapper } from 'redux-token-auth'
+import React, { useEffect } from 'react';
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { Switch, Route, withRouter } from 'react-router-dom';
 import './App.css';
 import Homepage from './pages/homepage';
 import SignUp from './pages/sign-up';
@@ -11,14 +12,35 @@ class App extends React.Component {
   
   render() {
    
+    const requireSignIn = Component =>
+      compose(
+        withRouter,
+        connect(state => ({ authUser: state.reduxTokenAuth.currentUser })),
+      )(({ authUser, ...props }) => {
+        useEffect(() => {
+          if (!authUser.isSignedIn && !authUser.isLoading) props.history.push('./signin')
+        }, [authUser])
+        return authUser ? <Component {...props} /> : null
+    })
+
+    const requireSignedOut = Component =>
+      compose(
+        withRouter,
+        connect(state => ({ authUser: state.reduxTokenAuth.currentUser })),
+      )(({ authUser, ...props }) => {
+        useEffect(() => {
+          if (authUser.isSignedIn && !authUser.isLoading) props.history.push('./')
+        }, [authUser])
+        return authUser ? <Component {...props} /> : null
+    })
 
   	return (
   	  <div>
 	  	  <Header />
   	  	  <Switch>
-  	      	<Route exact path='/' component={Homepage} />
-  	      	<Route path='/signup' component={SignUp} />
-            <Route path='/signin' component={SignIn} />
+  	      	<Route exact path='/' component={requireSignIn(Homepage)} />
+  	      	<Route path='/signup' component={requireSignedOut(SignUp)} />
+            <Route path='/signin' component={requireSignedOut(SignIn)} />
   	      </Switch>
       </div>
     );
