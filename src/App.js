@@ -11,28 +11,6 @@ import Header from './components/header/header';
 class App extends React.Component {
   
   render() {
-   
-    const requireSignIn = Component =>
-      compose(
-        withRouter,
-        connect(state => ({ authUser: state.reduxTokenAuth.currentUser })),
-      )(({ authUser, ...props }) => {
-        useEffect(() => {
-          if (!authUser.isSignedIn && !authUser.isLoading) props.history.push('./signin')
-        }, [authUser])
-        return authUser ? <Component {...props} /> : null
-    })
-
-    const requireSignedOut = Component =>
-      compose(
-        withRouter,
-        connect(state => ({ authUser: state.reduxTokenAuth.currentUser })),
-      )(({ authUser, ...props }) => {
-        useEffect(() => {
-          if (authUser.isSignedIn && !authUser.isLoading) props.history.push('./')
-        }, [authUser])
-        return authUser ? <Component {...props} /> : null
-    })
 
   	return (
   	  <Switch>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { signInUser } from '../../redux-token-auth-config';
 import './sign-in.styles.scss'
 
 class SignIn extends React.Component {
@@ -24,9 +23,6 @@ class SignIn extends React.Component {
 	      email,
 	      password,
 	    } = this.state
-	    signInUser({ email, password })
-	      .then(res => {console.log(res)})
-	      .catch(err => {console.log(err)})
 	}
 
 	render() {
@@ -41,4 +37,4 @@ class SignIn extends React.Component {
 	}
 }
 
-export default connect( null, { signInUser })(SignIn);
+export default connect()(SignIn);

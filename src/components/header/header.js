@@ -4,9 +4,8 @@ import Filter from '../filter/filter';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { toggleHidden } from '../../redux/actions/filter';
-import { signOutUser } from '../../redux-token-auth-config'
 
-const Header = ({hidden, toggleHidden, signOutUser, isSignedIn}) => (
+const Header = ({hidden, toggleHidden}) => (
 		<div className='header'>
 			<Link to='/'>
 				<h1 className='logo'>Bookstore CMS</h1>
@@ -16,7 +15,7 @@ const Header = ({hidden, toggleHidden, signOutUser, isSignedIn}) => (
 				<p className='option' onClick={toggleHidden}>Categories</p>
 				{
 					isSignedIn ?
-					<p className='option' onClick={signOutUser}>Sign out</p>
+					<p className='option'>Sign out</p>
 					:
 					<Link to='/signin'>
 						<p className='option'>Sign in</p>
@@ -30,9 +29,8 @@ const Header = ({hidden, toggleHidden, signOutUser, isSignedIn}) => (
 		</div>
 )
 
-const mapStateToProps = ({ filter, reduxTokenAuth:{currentUser} }) => ({
-  hidden: filter.hidden,
-  isSignedIn: currentUser.isSignedIn
+const mapStateToProps = ({ filter }) => ({
+  hidden: filter.hidden
 })
 
-export default connect(mapStateToProps, { toggleHidden, signOutUser })(Header);
+export default connect(mapStateToProps, { toggleHidden })(Header);
