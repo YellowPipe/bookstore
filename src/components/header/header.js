@@ -14,7 +14,7 @@ const Header = ({hidden, toggleHidden}) => (
 				<p className='option'>Books</p>
 				<p className='option' onClick={toggleHidden}>Categories</p>
 				{
-					isSignedIn ?
+					true ?
 					<p className='option'>Sign out</p>
 					:
 					<Link to='/signin'>

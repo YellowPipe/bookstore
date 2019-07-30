@@ -14,8 +14,8 @@ class App extends React.Component {
 
   	return (
   	  <Switch>
-      	<Route exact path='/' component={requireSignIn(Homepage)} />
-        <Route path='/signin' component={requireSignedOut(SignInUp)} />
+      	<Route exact path='/' component={Homepage} />
+        <Route path='/signin' component={SignInUp} />
       </Switch>
     );
   }
