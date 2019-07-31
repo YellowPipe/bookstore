@@ -15,13 +15,16 @@ const Book = ({id, title, category, read, removeBook, changeStatus }) => {
 
 	const handleStatusChange = (id) => {
 		fetch(`http://localhost:3000/api/v1/books/${id}`, {
-		  method: 'PUT',
-		  headers: {'Content-Type':'application/json'},
-		   body: JSON.stringify({
-		    "read": !read,
-		    "title": title,
-		    "category": category
-		   })
+			method: 'PUT',
+			headers: {
+				'Content-Type':'application/json',
+				'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`
+			},
+			body: JSON.stringify({
+			    "read": !read,
+			    "title": title,
+			    "category": category
+			})
 		})
 		.then(changeStatus(id));
 	}

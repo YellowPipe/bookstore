@@ -22,13 +22,17 @@ class BookForm extends React.Component {
 		event.preventDefault();
 		const { title, category } = this.state; 
 		fetch('http://localhost:3000/api/v1/books', {
-		   method: 'post',
-		   headers: {'Content-Type':'application/json'},
-		   body: JSON.stringify({
-		    "title": title,
-		    "category": category
+		   	method: 'post',
+		   	headers: {
+		   		'Content-Type':'application/json',
+				'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`
+			},
+			body: JSON.stringify({
+			    "title": title,
+			    "category": category
 		   })
-		}).then(res => res.json())
+		})
+		.then(res => res.json())
 		.then(book => {this.props.addBook(book)})
 		.catch(err => {console.log(err)});
 

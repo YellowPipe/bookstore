@@ -7,8 +7,10 @@ import { setLibrary } from '../../redux/actions/library';
 class BookList extends React.Component {
 
 	componentWillMount() {
-		console.log('called')
-		fetch('http://localhost:3000/api/v1/books')
+		fetch('http://localhost:3000/api/v1/books', {
+	      method: 'GET',
+	      headers: {'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`}
+	    })
 		.then(res => res.json())
 		.then(data => this.props.setLibrary(data))
 		.catch(err => {console.log(err)});
