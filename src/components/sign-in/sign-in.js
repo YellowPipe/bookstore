@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { loginSuccess } from '../../redux/actions/session';
 import './sign-in.styles.scss';
-import { login } from '../../api/sessionApi';
 
 class SignIn extends React.Component {
 	constructor() {

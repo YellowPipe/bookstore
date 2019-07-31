@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { login, register } from '../../api/sessionApi';
 import { loginSuccess } from '../../redux/actions/session';
 
 class SignUp extends React.Component {
