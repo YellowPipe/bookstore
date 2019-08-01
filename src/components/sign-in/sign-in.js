@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { loginSuccess } from '../../redux/actions/session';
 import './sign-in.styles.scss';
 
@@ -46,13 +45,5 @@ class SignIn extends React.Component {
 		)
 	}
 }
-
-// const mapStateToProps = ( loginUser ) => ({
-	
-// })
-
-// const mapDispatchToProps = (dispatch) => ({
-//     actions: bindActionCreators(session, dispatch)
-// });
 
 export default connect(null, { loginSuccess })(SignIn);

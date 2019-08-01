@@ -4,7 +4,6 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
 import Homepage from './pages/homepage/homepage';
 import SignInUp from './pages/sign-in-up/sign-in-up';
-import Header from './components/header/header';
 
 class App extends React.Component {
 

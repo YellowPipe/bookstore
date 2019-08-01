@@ -31,11 +31,6 @@ class SignUp extends React.Component {
         headers: {'Content-Type':'application/json'}, 
         body: JSON.stringify({email, username, password, password_confirmation: passwordConfirmation})
       	})
-	  	.then(fetch('http://localhost:3000/api/v1/user_token', {
-	        method: 'POST',
-	        headers: {'Content-Type':'application/json'}, 
-	        body: JSON.stringify({auth:  {email, password}})
-	    }))
 		.then(response => response.json())
 		.then(response => {
 		  sessionStorage.setItem('jwt', response.jwt)
