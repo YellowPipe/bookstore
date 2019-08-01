@@ -29,7 +29,8 @@ class BookForm extends React.Component {
 			},
 			body: JSON.stringify({
 			    "title": title,
-			    "category": category
+			    "category": category,
+			    "read": "false"
 		   })
 		})
 		.then(res => res.json())
