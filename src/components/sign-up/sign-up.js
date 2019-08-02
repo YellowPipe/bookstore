@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { loginSuccess } from '../../redux/actions/session';
+import { API_URL } from '../../constants/constants';
 
 class SignUp extends React.Component {
 	constructor() {
@@ -26,7 +27,7 @@ class SignUp extends React.Component {
 	      password,
 	      passwordConfirmation
 	    } = this.state
-	    fetch('http://localhost:3000/api/v1/users', {
+	    fetch(`${API_URL}/users`, {
         method: 'POST',
         headers: {'Content-Type':'application/json'}, 
         body: JSON.stringify({email, username, password, password_confirmation: passwordConfirmation})

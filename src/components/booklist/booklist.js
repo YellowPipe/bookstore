@@ -3,11 +3,12 @@ import Book from '../book/book';
 import { connect } from 'react-redux';
 import './booklist.styles.scss'
 import { setLibrary } from '../../redux/actions/library';
+import { API_URL } from '../../constants/constants';
 
 class BookList extends React.Component {
 
 	componentWillMount() {
-		fetch('http://localhost:3000/api/v1/books', {
+		fetch(`${API_URL}/books`, {
 	      method: 'GET',
 	      headers: {'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`}
 	    })

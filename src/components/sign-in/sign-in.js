@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { loginSuccess } from '../../redux/actions/session';
 import './sign-in.styles.scss';
+import { API_URL } from '../../constants/constants';
 
 class SignIn extends React.Component {
 	constructor() {
@@ -19,7 +20,7 @@ class SignIn extends React.Component {
 
 	submitForm = (event) => {
 	    event.preventDefault();
-  		fetch('http://localhost:3000/api/v1/user_token', {
+  		fetch(`${API_URL}/user_token`, {
         method: 'POST',
         headers: {'Content-Type':'application/json'}, 
         body: JSON.stringify({auth: this.state})

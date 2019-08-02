@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { addBook } from '../../redux/actions/library';
 import './book-form.styles.scss';
 import { CATEGORIES } from '../../constants/constants';
+import { API_URL } from '../../constants/constants';
 
 class BookForm extends React.Component {
 	constructor() {
@@ -21,7 +22,7 @@ class BookForm extends React.Component {
 	handleSubmit = event => {
 		event.preventDefault();
 		const { title, category } = this.state; 
-		fetch('http://localhost:3000/api/v1/books', {
+		fetch(`${API_URL}/books`, {
 		   	method: 'post',
 		   	headers: {
 		   		'Content-Type':'application/json',
