@@ -1,32 +1,35 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { removeBook, changeStatus } from '../../redux/actions/library';
+// import { API_URL } from '../../constants/constants';
 import './book.styles.scss';
 
 const Book = ({id, title, category, read, removeBook, changeStatus }) => {
 
 	const handleDelete = (id) => {
-		fetch(`http://localhost:3000/api/v1/books/${id}`, {
-		  method: 'DELETE'
-		})
-		.then(removeBook(id))
-		.catch(err => {console.log(err)})
+		// fetch(`http://localhost:3000/api/v1/books/${id}`, {
+		//   method: 'DELETE'
+		// })
+		// .then(removeBook(id))
+		// .catch(err => {console.log(err)})
+		removeBook(id)
 	}
 
 	const handleStatusChange = (id) => {
-		fetch(`http://localhost:3000/api/v1/books/${id}`, {
-			method: 'PUT',
-			headers: {
-				'Content-Type':'application/json',
-				'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`
-			},
-			body: JSON.stringify({
-			    "read": !read,
-			    "title": title,
-			    "category": category
-			})
-		})
-		.then(changeStatus(id));
+		// fetch(`${API_URL}/books/${id}`, {
+		// 	method: 'PUT',
+		// 	headers: {
+		// 		'Content-Type':'application/json',
+		// 		'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`
+		// 	},
+		// 	body: JSON.stringify({
+		// 	    "read": !read,
+		// 	    "title": title,
+		// 	    "category": category
+		// 	})
+		// })
+		// .then(changeStatus(id));
+		changeStatus(id)
 	}
 
 	return (
