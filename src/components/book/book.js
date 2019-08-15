@@ -4,47 +4,19 @@ import { removeBook, changeStatus } from '../../redux/actions/library';
 // import { API_URL } from '../../constants/constants';
 import './book.styles.scss';
 
-const Book = ({id, title, category, read, removeBook, changeStatus }) => {
-
-	const handleDelete = (id) => {
-		// fetch(`http://localhost:3000/api/v1/books/${id}`, {
-		//   method: 'DELETE'
-		// })
-		// .then(removeBook(id))
-		// .catch(err => {console.log(err)})
-		removeBook(id)
-	}
-
-	const handleStatusChange = (id) => {
-		// fetch(`${API_URL}/books/${id}`, {
-		// 	method: 'PUT',
-		// 	headers: {
-		// 		'Content-Type':'application/json',
-		// 		'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`
-		// 	},
-		// 	body: JSON.stringify({
-		// 	    "read": !read,
-		// 	    "title": title,
-		// 	    "category": category
-		// 	})
-		// })
-		// .then(changeStatus(id));
-		changeStatus(id)
-	}
-
-	return (
+const Book = ({id, title, category, read, removeBook, changeStatus }) => (
 		<div className='book'>
 			<div className='info'>
 				<p className='category'>{category}</p>
 				<p className='title'>{title}</p>
-				<p className='delete-book' onClick={() => handleDelete(id)} >Delete</p>
+				<p className='delete-book' onClick={() => removeBook(id)} >Delete</p>
 			</div>
 			<div className='progress'>
-				<button onClick={() => handleStatusChange(id)} className={`${read ? 'read' : 'in-progress'} button`}>
+				<button onClick={() => changeStatus(id)} className={`${read ? 'read' : 'in-progress'} button`}>
 					{read ? 'Finished' : 'In progress'}
 				</button>
 			</div>
 		</div>
-)}
+)
 
 export default connect(null, { removeBook, changeStatus })(Book);

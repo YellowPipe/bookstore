@@ -20,21 +20,6 @@ class BookForm extends React.Component {
 	handleSubmit = event => {
 		event.preventDefault();
 		const { title, category } = this.state; 
-		// fetch(`${API_URL}/books`, {
-		//    	method: 'post',
-		//    	headers: {
-		//    		'Content-Type':'application/json',
-		// 		'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`
-		// 	},
-		// 	body: JSON.stringify({
-		// 	    "title": title,
-		// 	    "category": category,
-		// 	    "read": "false"
-		//    })
-		// })
-		// .then(res => res.json())
-		// .then(book => {this.props.addBook(book)})
-		// .catch(err => {console.log(err)});
 		this.props.addBook({title, category, read: false, id: Math.floor(Math.random() * 100000)})
 		this.setState({
 			title: '',

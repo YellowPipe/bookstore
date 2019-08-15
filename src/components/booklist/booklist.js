@@ -6,17 +6,6 @@ import { setLibrary } from '../../redux/actions/library';
 // import { API_URL } from '../../constants/constants';
 
 class BookList extends React.Component {
-
-	// componentWillMount() {
-		// fetch(`${API_URL}/books`, {
-	 //      method: 'GET',
-	 //      headers: {'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`}
-	 //    })
-		// .then(res => res.json())
-		// .then(data => this.props.setLibrary(data))
-		// .catch(err => {console.log(err)});
-	// }
-
 	render () {
 		const { books } = this.props;
 		return (
