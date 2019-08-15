@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { addBook } from '../../redux/actions/library';
 import './book-form.styles.scss';
 import { CATEGORIES } from '../../constants/constants';
-// import { API_URL } from '../../constants/constants';
 
 class BookForm extends React.Component {
 	state = {
@@ -11,6 +10,7 @@ class BookForm extends React.Component {
 		category: 'Action'
 	}
 
+	 
 
 	handleChange = event => {
 		const {name, value } = event.target;
@@ -28,10 +28,11 @@ class BookForm extends React.Component {
 	}
 
 	render() {
+		const { title, category } = this.state;
 		return (
 			<form className='form' onSubmit={this.handleSubmit} >
-			  <input required className='title-field' placeholder='Book Title' type="text" name="title" value={this.state.title} onChange={this.handleChange} />
-			  <select required className='category' name="category" value={this.state.category} onChange={this.handleChange} >
+			  <input required className='title-field' placeholder='Book Title' type="text" name="title" value={title} onChange={this.handleChange} />
+			  <select required className='category' name="category" value={category} onChange={this.handleChange} >
 			    {
 					CATEGORIES.map((category, i) => (
 						<option key={i} value={category}>{category}</option>

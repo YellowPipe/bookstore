@@ -4,14 +4,8 @@ import Filter from '../filter/filter';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { toggleHidden } from '../../redux/actions/filter';
-import { logOutUser } from '../../redux/actions/session';
 
-const Header = ({hidden, toggleHidden, logOutUser}) =>{
-	
-	const logout = () => {
-		sessionStorage.removeItem('jwt');
-		logOutUser()
-	}
+const Header = ({hidden, toggleHidden}) =>{
 
 	return (
 		<div className='header'>
@@ -20,7 +14,7 @@ const Header = ({hidden, toggleHidden, logOutUser}) =>{
 			</Link>
 			<div className='options'>
 				<p className='option' onClick={toggleHidden}>Categories</p>
-				<p className='option' onClick={logout}>Sign out</p>
+				<p className='option'>Sign out</p>
 			</div>
 			{
 				hidden ? null : <Filter />
@@ -29,8 +23,7 @@ const Header = ({hidden, toggleHidden, logOutUser}) =>{
 )}
 
 const mapStateToProps = ({ filter, session }) => ({
-  hidden: filter.hidden,
-  logged_in: session
+  hidden: filter.hidden
 })
 
-export default connect(mapStateToProps, { toggleHidden, logOutUser })(Header);
+export default connect(mapStateToProps, { toggleHidden })(Header);
