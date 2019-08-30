@@ -35,7 +35,6 @@ class SignIn extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  session: state.session.session,
   loading: state.session.loading,
   error: state.session.error
 });

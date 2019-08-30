@@ -13,14 +13,13 @@ class BookForm extends React.Component {
 	 
 
 	handleChange = event => {
-		const {name, value } = event.target;
+		const { name, value } = event.target;
 		this.setState({ [name]: value });
 	}
 
 	handleSubmit = event => {
 		event.preventDefault();
-		const { title, category } = this.state; 
-		this.props.addBook({title, category, read: false, id: Math.floor(Math.random() * 100000)})
+		this.props.addBook(this.state)
 		this.setState({
 			title: '',
 			category: 'Action'

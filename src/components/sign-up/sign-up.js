@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { loginSuccess } from '../../redux/actions/session';
-import { API_URL } from '../../constants/constants';
+import { register } from '../../redux/actions/session';
 
 class SignUp extends React.Component {
 	constructor() {
@@ -21,25 +20,7 @@ class SignUp extends React.Component {
 
 	submitForm = (e) => {
 	    e.preventDefault()
-	    const {
-	      email,
-	      username,
-	      password,
-	      passwordConfirmation
-	    } = this.state
-	    fetch(`${API_URL}/users`, {
-        method: 'POST',
-        headers: {'Content-Type':'application/json'}, 
-        body: JSON.stringify({email, username, password, password_confirmation: passwordConfirmation})
-      	})
-		.then(response => response.json())
-		.then(response => {
-		  sessionStorage.setItem('jwt', response.jwt)
-		})
-		.then((response) => this.props.loginSuccess())
-		.catch(error => {
-		 console.log(error);
-		})    
+	    this.props.register(this.state);  
 	}
 
 	render() {
@@ -56,4 +37,4 @@ class SignUp extends React.Component {
 	}
 }
 
-export default connect(null, { loginSuccess })(SignUp); 
+export default connect(null, {register})(SignUp); 
