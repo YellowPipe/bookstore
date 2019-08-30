@@ -26,8 +26,9 @@ export const removeBookBegin = (bookId) => ({
 	bookId
 })
 
-export const removeBookSuccess = () => ({
-	type: REMOVE_BOOK_SUCCESS
+export const removeBookSuccess = (id) => ({
+	type: REMOVE_BOOK_SUCCESS,
+	id
 })
 
 export const removeBookFailure = error => ({
@@ -35,13 +36,13 @@ export const removeBookFailure = error => ({
 	payload: { error }
 })
 
-export const changeStatusBegin = bookId => ({
-	type: CHANGE_STATUS_BEGIN,
-	bookId
+export const changeStatusBegin = () => ({
+	type: CHANGE_STATUS_BEGIN
 })
 
-export const changeStatusSuccess = () => ({
-	type: CHANGE_STATUS_SUCCESS
+export const changeStatusSuccess = id => ({
+	type: CHANGE_STATUS_SUCCESS,
+	id
 })
 
 export const changeStatusFailure = error => ({
@@ -104,3 +105,42 @@ export const addBook = ({title, category}) => {
       	});
   	};
 };
+
+export const removeBook = bookId => (
+	dispatch => {
+		dispatch(removeBookBegin());
+		return fetch(`${API_URL}/books/${bookId}`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type':'application/json',
+				'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`
+			}
+		})
+		.then(dispatch(removeBookSuccess(bookId)))
+		.catch(error => {
+      		dispatch(removeBookFailure(error))
+      	});
+	}
+);
+
+export const changeStatus = (title, category, read, id) => (
+	dispatch => {
+		dispatch(changeStatusBegin());
+		return fetch(`${API_URL}/books/${id}`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type':'application/json',
+				'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`
+			},
+			body: JSON.stringify({
+			    "read": !read,
+			    "title": title,
+			    "category": category
+			})
+		})
+		.then(dispatch(changeStatusSuccess(id)))
+		.catch(error => {
+      		dispatch(changeStatusFailure(error))
+      	});
+	}
+);

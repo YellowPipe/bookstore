@@ -31,15 +31,50 @@ const libraryReducer = (state = INITIAL_STATE, action) => {
 				loading: false,
 				error: action.payload.error
 			}
-		// case REMOVE_BOOK:
-		// 	return state.filter(({id}) => id !== action.bookId)
-		// case CHANGE_STATUS:
-		// 	return state.map((book) => {
-		// 				if (book.id === action.bookId) {
-		// 					book.read = !book.read
-		// 				}
-		// 				return book 	
-		// 			})
+		case REMOVE_BOOK_BEGIN:
+			return {
+				...state,
+				loading: true,
+				error: null
+			}
+		case REMOVE_BOOK_SUCCESS:
+			return {
+				...state,
+				books: state.books.filter((book) => book.id !== action.id),
+				loading: false
+			}
+		case REMOVE_BOOK_FAILURE:
+			return {
+				...state,
+				loading: false,
+				error: action.payload.error
+			}
+
+		case CHANGE_STATUS_BEGIN:
+			return {
+				...state,
+				loading: true,
+				error: null
+			}
+		case CHANGE_STATUS_SUCCESS:
+			return {
+				...state,
+				loading: false,
+				books: state.books.map((book) => {
+						if (book.id === action.id) {
+							book.read = !book.read
+						}
+						return book 	
+				})
+			}
+
+		case CHANGE_STATUS_FAILURE:
+			return {
+				...state,
+				loading: false,
+				error: action.payload.error
+			}
+
 		case SET_LIBRARY_BEGIN:
 			return {
 				...state,
