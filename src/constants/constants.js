@@ -1,2 +1,2 @@
 export const CATEGORIES = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
-export const API_URL = 'https://tranquil-savannah-91108.herokuapp.com/api/v1';
+export const API_URL = 'https://fd-bookstore-api.herokuapp.com/api/v1';

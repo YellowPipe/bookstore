@@ -4,3 +4,7 @@ export const CHANGE_STATUS = 'CHANGE_STATUS'
 export const CHANGE_FILTER = 'CHANGE_FILTER';
 export const TOGGLE_HIDDEN = 'TOGGLE_HIDDEN';
 export const SET_LIBRARY = 'SET_LIBRARY';
+export const LOGIN_BEGIN   = 'LOGIN_BEGIN';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+export const LOG_OUT = 'LOG_OUT';
