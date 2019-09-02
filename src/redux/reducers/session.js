@@ -1,4 +1,4 @@
-import { LOGIN_BEGIN, LOGIN_SUCCESS, LOGIN_FAILURE, REGISTER_BEGIN, REGISTER_SUCCESS, REGISTER_FAILURE, LOG_OUT } from '../actionTypes';
+import { BEGIN_LOADING_USER, LOGIN_SUCCESS, LOGIN_FAILURE, REGISTER_SUCCESS, REGISTER_FAILURE, LOG_OUT } from '../actionTypes';
 
 const INITIAL_STATE = {
 	loading: false,
@@ -8,7 +8,7 @@ const INITIAL_STATE = {
 
 export default function sessionReducer(state = INITIAL_STATE, action) {
   switch(action.type) {
-	case LOGIN_BEGIN:
+	case BEGIN_LOADING_USER:
 		return {
 			...state,
 			loading: true,
@@ -27,12 +27,6 @@ export default function sessionReducer(state = INITIAL_STATE, action) {
 			session: false,
 			loading: false,
 			error: action.payload.error
-		};
-	case REGISTER_BEGIN:
-		return {
-			...state,
-			loading: true,
-			error: null
 		};
     case REGISTER_SUCCESS:
       	return {

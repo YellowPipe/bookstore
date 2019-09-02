@@ -1,8 +1,8 @@
-import { LOGIN_BEGIN, LOGIN_SUCCESS, LOGIN_FAILURE, REGISTER_BEGIN, REGISTER_SUCCESS, REGISTER_FAILURE, LOG_OUT } from '../actionTypes';
+import { BEGIN_LOADING_USER, LOGIN_SUCCESS, LOGIN_FAILURE, REGISTER_SUCCESS, REGISTER_FAILURE, LOG_OUT } from '../actionTypes';
 import { API_URL } from '../../constants/constants';
 
-export const loginBegin = () => ({
-  type: LOGIN_BEGIN
+export const beginLoadingUser = () => ({
+  type: BEGIN_LOADING_USER
 });
 
 export const loginSuccess = () => ({
@@ -13,10 +13,6 @@ export const loginFailure = error => ({
   type: LOGIN_FAILURE,
   payload: { error }
 });
-
-export const registerBegin = () => ({
-  type: REGISTER_BEGIN
-})
 
 export const registerSuccess = () => ({
   type: REGISTER_SUCCESS
@@ -33,7 +29,7 @@ export const logOut = () => ({
 
 export const login = (credentials) => {
   return dispatch => {
-    dispatch(loginBegin());
+    dispatch(beginLoadingUser());
     return fetch(`${API_URL}/user_token`, {
         method: 'POST',
         headers: {'Content-Type':'application/json'}, 
@@ -61,7 +57,7 @@ export const register = (credentials) => {
         passwordConfirmation
       } = credentials
   return dispatch => {
-    dispatch(registerBegin());
+    dispatch(beginLoadingUser());
     return fetch(`${API_URL}/users`, {
         method: 'POST',
         headers: {'Content-Type':'application/json'}, 
