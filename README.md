@@ -1,6 +1,8 @@
 # Bookstore CMS
+An app to keep track of your books.
+Built from scratch with React, Redux and Ruby on Rails api as a backend.
 
-Done as a part of Microverse Main Ciricculum 
+[Backend](https://github.com/YellowPipe/bookstore-api)
 
 To run the app
 
