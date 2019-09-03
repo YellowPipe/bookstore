@@ -15,3 +15,10 @@ Built from scratch with React, Redux and Ruby on Rails api as a backend.
 
 * React
 * Redux
+
+## Future features
+
+*  Select the reading percentage of each book
+* Possibility for the user to manage the list of available categories
+* Possibility for the user to add comments to each book in the library
+* Connecting to [Goodreads API](https://www.goodreads.com/api) to let the user easily add new books
