@@ -34,9 +34,4 @@ class SignIn extends React.Component {
 	}
 }
 
-const mapStateToProps = state => ({
-  loading: state.session.loading,
-  error: state.session.error
-});
-
-export default connect(mapStateToProps)(SignIn); 
+export default connect()(SignIn); 
