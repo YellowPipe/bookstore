@@ -2,6 +2,8 @@
 An app to keep track of your books.
 Built from scratch with React, Redux and Ruby on Rails api as a backend.
 
+[Backend](https://github.com/YellowPipe/bookstore-api)
+
 ## Technology used
 
 * React
@@ -28,15 +30,6 @@ Also make sure that NPM is installed by running `npm -v`.
 $ npm -v
 > 6.11.2
 ```
-
-<hr>
-
-In order to be able to fetch data from the back end API in a development
-environment, follow these steps:
-
-* Clone this [repository](https://github.com/YellowPipe/bookstore-api)
-* Follow the README's instructions
-* Run the server
 
 ### To run the app
 
