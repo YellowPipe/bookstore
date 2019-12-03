@@ -1,6 +1,11 @@
 .sign-in-up {
 	display: flex;
 	justify-content: space-around;
+	
+	.demo-user-div {
+		color: red;
+		padding: 20px;
+	}
 }
 
 .welcome {

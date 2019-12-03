@@ -11,6 +11,11 @@ const SignInUp = ({loading}) => (
 		<h1 className='welcome'> Welcome to Bookstore CMS</h1>
 		<div className='sign-in-up'>
 			<SignIn />
+			<div className='demo-user-div'>
+				<p>Demo user:</p>
+				<p>email: test@mail.com</p>
+				<p>password: password</p>
+			</div>
 			<SignUp />
 		</div>
 	</div>
