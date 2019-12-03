@@ -13,8 +13,8 @@ const SignInUp = ({loading}) => (
 			<SignIn />
 			<div className='demo-user-div'>
 				<p>Demo user:</p>
-				<p>email: test@mail.com</p>
-				<p>password: password</p>
+				<p>Email: test@mail.com</p>
+				<p>Password: password</p>
 			</div>
 			<SignUp />
 		</div>
